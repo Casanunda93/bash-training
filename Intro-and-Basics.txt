@@ -1,0 +1,121 @@
+Terminal Commands
+
+Navigation
+
+ls                                          (List the contents of current directory)
+ls "foldername"                             (list contents of specified folder)
+ls -a                                       (shows everything in current directory including hidden files)
+ls -l                                       (lists in long format, more detail about contents, - at start means file, d at start means directory)
+ls -F                                       (lists with a slash at the end of each foldername, * to each executable file)
+ls -ld                                      (list long format data about the folder without listing the contents)
+
+Remember, these options can be combined e.g. ls -aF would show all hidden files and folders with a slash at the end of each folder etc)
+
+
+open .                                      (Opens a GUI of the current directory)
+open "filename" or "foldername"             (Opens GUI of the specified file or folder)
+code .                                      (Opens all files in the directory in Visual Studios)
+code "filename" or "foldername"             (Opens specified file or folder in Visual Studios)
+pwd                                         (Print Working Directory)
+cd "Foldername"                             (Change directory to specified folder)
+cd                                          (leaving it blank after cd will always take you to the home folder)
+cd ..                                       (Move backwards one directory)
+cd -                                        (move to previous location)
+q                                           (quit when in screen that has "END")
+
+
+Creating Files and Folders
+
+touch                                       (create a file i.e. touch adam.txt)
+touch <file>                                (updates last edited time of specified file)
+mkdir                                       (create a new folder)
+mkdir -p <folder1>/<folder2>                (creates folder 1, then creates folder 2 inside folder 1)
+cp <file-name> <new-file-name>              (makes a copy of the original file with the specified name)
+cp <file-name> <directory>                  (makes a copy of the file in the specified directory)
+cp -v                                       (makes a copy and displays an output confirming it)
+cp -i                                       (makes a copy and questions any overwrites if copying something that already exists)
+cp -r <directory-name> <other-directory>    (copies the directory specified into another directory)
+
+Deleting Files and Folders
+
+rm                                          (removes file permanently)
+rm -rf                                      (removes a folder permanently)
+
+
+Moving files
+
+mv <file-name> <directory>                  (moves the file to the specified directory)
+mv <directory> <new-directory>              (moves the directory into another directory)
+mv <file-name> <new-name>                   (renames a files)
+
+Using a Hash allows you to write anything in the terminal without generating an error, it's a comment function. 
+
+clear                                       (wipes your terminal screen)
+
+Accessing Files
+
+cat <file>                                  (Prints contents of file to terminal)
+cat -n <file>                               (prints contents of file to terminal with each line numbered)
+**We can cat multiple files**
+more <file>                                 (prints contents of file to terminal with pointer at start of file contents)
+less <file>                                 (prints contents of file to terminal on seperate screen, q to end)
+/"search term"                              (while in less mode, allows you to search for particular words, n for next, b for back)
+
+
+echo "sentence"                             (prints contents of quotes to screen)
+echo -e "words \n words"                    (prints contents of quotes to screen, -e and \n allows a new line to be made between the two words)
+echo -e "words \t words"                    (prints contents of quotes to screen, -e and \t allows a tab to be made between the two words)
+echo -e "words \v words"                    (prints contents of quotes to screen, -e and \c allows a verticle tab to be made between the two words)
+
+
+Wildcards
+*                                           (any characters e.g. ls *.txt would list all .txt files in a directory, ls d* would list all files starting with d)
+?                                           (any SINGLE character e.g. ls ??.txt would list all txt files with 2 characters as their name)
+[abc]                                       (any file that start with a or b or c)
+!                                           (exclude e.g. [!abc] so exclude abc)
+[[:alpha:]]                                 (all letters)
+[[:digit:]]                                 (all numbers)
+[[:lower:]]                                 (all lower case letters)
+[[:upper:]]                                 (all upper case letters)
+
+
+Variables
+
+We can set any variables we want via command line e.g. 
+    bob=130
+if we want to see what bob is then equal to we use echo with dollar sign:
+    echo ${bob}                             (returns value of bob)
+if we wanted to unset the variable bob we use:
+    unset bob
+
+echo ${#variable}                           (the use of # returns the legnth of the string i.e. number of characters in the variable)
+
+echo ${variable:number}                     (displays the value of the variable starting at the character specified by the number)
+
+echo ${variable:number1:number2}            (displays the value of the variable starting at the character specified by the number1 for the number of characters specified
+                                             by number 2)
+
+echo ${variable: negative-number}           (displays the value of the variable starting at the character specified by the number from the end of the string, have to use
+                                             a space to make this work)
+
+
+Variable Manipulation
+
+echo ${variable#symbol}                     (displays the value of the variable with the specified symbol removed from the starting position if present)
+echo ${variable#*symbol}                    (displays the value of the variable with all characters removed up to the specified symbol)
+echo ${variable%symbol}                     (displays the value of the variable with the specified symbol removed from the end position if present)
+echo ${variable%symbol*}                    (displays the value of the variable with all characters removed up to the specified symbol starting from end position)
+
+
+Permanent Variables
+
+When we log in to the computer, the login script is run. 
+We can make changes to this script in order to create permanent variables i.e. fixed variables that will remain even if terminal is closed. 
+
+This file is called .bashrc on linux and is hidden in the home folder
+I have added a personal welcome message to the file as an example which appears whenever you open terminal. 
+
+
+
+
+
