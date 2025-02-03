@@ -116,6 +116,11 @@ This file is called .bashrc on linux and is hidden in the home folder
 I have added a personal welcome message to the file as an example which appears whenever you open terminal. 
 
 
+Read from input: read
 
+read a                                      (store the following input into variable a)
+read -p "Input Message" a                   (Print the quotation and then store the following input as variable a)
+
+***If we don't speicify a variable to "read" it will still store the following input as an environment variable called REPLY***
 
 
