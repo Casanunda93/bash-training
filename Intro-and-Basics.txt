@@ -235,6 +235,37 @@ echo {a,b,c}_{1,2,3} creates output "a_1 a_2 a_3 b_1 b_2 b_3 c_1 c_2 c_3
 
 
 
+Permissions in terminal
+
+bash scripts are executable files meaning you need to have permission to execute it. 
+In every unix system, there are different users with different permissions.
+
+whoami                              (tells me my username)
+
+Every is assigned to an "OWNER" and a "GROUP"
+
+OWNER is the user that owns the file
+GROUP is a collection of one or more users
+
+When we run ls-l, the first column after the rw--1 is the Owner of the file, the second is the Group
+
+Every file can be:
+
+readable -------> 'r'   (or not readable)
+writable -------> 'w'   (or not writable)
+executable -----> 'x'   (or not executable)
+
+
+-rw-rw-r-- 1 adam adam 11211 Feb  3 01:00 Intro-and-Basics.txt
+
+Ignore the first dash (just signifies - for a file or d for directory), then look at each group in groups of 3:
+rw-  (owner's permissions, readable, writable, not executable)
+rw-  (group's permissions, readable, writable, not executable)
+r--  (everyone else, readable, not writable, not executable)
+
+
+
+
 
 
 
