@@ -218,6 +218,25 @@ grep -v "Search term"                   (Searches for everything EXCEPT whatever
 
 
 
+Brace Expansion
+
+echo {1,2,3} creates output "1 2 3" to screen. 
+echo {1,2,3}file creates output "1file 2file 3file"
+echo {1,2,3}_file creates output "1_file 2_file 3_file"
+echo example{1,2,3} creates output "example1 example2 example3"
+echo example{1..4} creates output "example1 example2 example3 example4"
+
+if I wanted to create 18 txt files named 1-18:
+touch file{1..18}.txt 
+Could do the same thing with directories etc
+
+echo {a,b,c}_{1,2,3} creates output "a_1 a_2 a_3 b_1 b_2 b_3 c_1 c_2 c_3
+
+
+
+
+
+
 
 
 
