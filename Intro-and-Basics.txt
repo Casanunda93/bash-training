@@ -203,6 +203,20 @@ You can pipe multiple times into multiple commands
 
 
 
+Grep
+
+grep allows you to search inside a file. 
+Say you have a file named "identity.txt" and you wanted to see if the word "Adam" was present inside that file:
+
+grep Adam indentity.txt                 (Searches the specified file for the search term and outputs the found term to the screen)
+
+***GREP IS CASE SENSITIVE, BE CAREFUL***
+
+grep -i "Search term"                   (Searches disregarding case sensitivity)
+
+grep -v "Search term"                   (Searches for everything EXCEPT whatever you specify)
+
+
 
 
 
