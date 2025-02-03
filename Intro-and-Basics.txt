@@ -180,6 +180,29 @@ This may be handy to redirect useless messages
 
 
 
+Pipe
+
+Pipe is used to take the output of command 1 as the input of command 2:
+
+command1 | command 2
+
+e.g. ls folder | less 
+
+takes the listed contents over folder and pipes it into the less command generating a second screen output
+
+
+extra commands:
+
+tail -4 file1.txt                       (Output the last 4 lines of a specified file to the screen)
+
+so say you have folder 1 containing 5 txt folders 1-5. 
+
+ls folder1 | tail -3                    (Outout the last 3 names of files in the folder to the screen i.e. 3.txt, 4.txt and 5.txt)
+
+You can pipe multiple times into multiple commands 
+
+
+
 
 
 
