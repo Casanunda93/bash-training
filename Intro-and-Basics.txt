@@ -157,6 +157,33 @@ This will continue until you run "^C" to exit the input prompt
 
 
 
+Redirecting errors
+
+When you type in a command that creates an error, the flow of that command from input to output is:
+
+Command -------> STDERR file --------> Screen 
+
+Again we can redirect the error message to another place or file using "2>"
+
+If we we want to redirect both the output and the error message to the same file we can instead use "&>"
+
+If we we want to redirect both the output and the error message to DIFFERENT files, we would have to use 1> and 2> pointing at different placed e.g:
+
+say we have 2 files of data, and we want to store ls info about the files in one new file and error in another
+ls -l file1.txt file2.txt file3.txt 1> output.txt 2> error.txt
+
+because we only have 2 starting files, asking about a third will throw up an error which will be printed to error.txt. 
+Meanwhile info about file1 and file2 will be printed to output.txt
+
+There is a folder in the unix system called /dev/null which is a place on unix to send things you want to dissapear. 
+This may be handy to redirect useless messages
+
+
+
+
+
+
+
 
 
 
