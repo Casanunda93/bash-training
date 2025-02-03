@@ -265,13 +265,49 @@ r--  (everyone else, readable, not writable, not executable)
 
 
 
+Channging permissions of a file
+
+bash script files have to be executable. 
+
+Say you have a file called info.txt with the following details:
+
+---------- 1 adam adam 11211 Feb  3 01:00 info.txt
+
+and we want to give read presmission to the owener:
+
+chmod u=r info.txt              (give read permission to the main user)
+
+-r-------- 1 adam adam 11211 Feb  3 01:00 info.txt
+
+chmod u=rw info.txt              (give read and write permission to the main user)
+
+-rw------- 1 adam adam 11211 Feb  3 01:00 info.txt
+
+If we then wanted to give the group readable permission:
+
+chmod g=r info.txt              (give read permission to the group)
+
+-rw-r----- 1 adam adam 11211 Feb  3 01:00 info.txt
+
+If we then wanted to allow everyone else readable permission:
+
+chmod o=r info.txt              (give read permission to anyone else)
+
+-rw-r--r-- 1 adam adam 11211 Feb  3 01:00 info.txt
 
 
+Since we want our scripts to be executable by everyone, we can run the following command to give executable permission to everyone:
 
+chmod +x info.txt               (Give executable permission to main user, group and everyone else)
 
+-rwxr-xr-x 1 adam adam 11211 Feb  3 01:00 info.txt
 
+If we wanted to remove all executable permissions we could run:
 
+chmod -x info.txt               (Remove executable permission to main user, group and everyone else)
 
+-rw-r--r-- 1 adam adam 11211 Feb  3 01:00 info.txt
 
+can also be used for "r" or "w"
 
 
