@@ -124,3 +124,40 @@ read -p "Input Message" a                   (Print the quotation and then store 
 ***If we don't speicify a variable to "read" it will still store the following input as an environment variable called REPLY***
 
 
+Redirecting the output
+
+When you type in a command, the flow of that command from input to output is:
+
+Command -------> STDOUT file --------> Screen 
+
+We can therefore redirect the flow from STDOUT to another place, another file etc, the command of which is "1>" or ">"
+
+e.g.
+
+Say we want to redirect the "ls -l" command so that it writes the result to a file rather than output to the screen
+ls -l 1> file.txt or ls -l > file.txt
+
+if you redirect to a file that does not exist, the file will be generated. 
+This is a common use for the echo command. 
+*** REDIRECTION OVERWRITES THE CONTENTS OF A FILE UNLESS SPECIFED***
+
+In order to avoid overwriting data we can perform an append redirect using the "1>>" or ">>" command
+
+example 2:
+
+say you have 2 text files, file 1 and file 2, and you want to combine their contents into a third file:
+
+cat file1.txt file2.txt 1> file3.txt
+
+we can also use cat with no extra options, redirected to a file, this prints whatever we type to a file i.e.
+cat 1> file.txt
+
+This will continue until you run "^C" to exit the input prompt 
+**** PRACTISE THIS BEFORE USING IT ****
+
+
+
+
+
+
+
