@@ -1,0 +1,15 @@
+To make a bash script:
+
+create a file
+open that file in the text editor of your choice (I prefer VS)
+add the line:
+    #! /bin/bash            (this says "whatever you find in this file, interpret it with bash) (Not strictly neccessary but good practise to ensure things run smoothly)
+ 
+We then need to change the permissions on the file to make it executable:
+
+chmod +x filename
+
+To run the file we run:
+    ./filename
+
+
