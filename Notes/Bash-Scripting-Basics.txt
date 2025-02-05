@@ -49,3 +49,40 @@ we can use the syntax " if [ -n "$d" ]; then  "  to check if a variable is NON-e
 we can use the syntax " if [ "$d" != "hello" ]; then " to say if d does NOT equal
 we can use the syntax " if [ ! -z "$d" ]; then  "  to check if a variable is NON-empty
 
+
+
+
+If functions on numbers
+
+Examples:
+
+read -p "give me a number " numb                                (Print the quotation and then store the following input as variable "numb")
+echo "-----------------------"
+
+
+
+if [ $numb -eq 18 ]; then                                       ("-eq" is equal to)
+    echo "It is 18"
+else 
+    echo "not 18"
+fi
+
+if [ $numb -ne 18 ]; then                                       ("-ne" is NOT equal to)
+    echo "Really not 18"
+fi
+
+if [ $numb -lt 18 ]; then                                       ("-lt" is lower than)
+    echo "It is lower than 18"
+fi
+
+if [ $numb -gt 18 ]; then                                       ("-gt" is lower than)
+    echo "It is greater than 18"
+fi
+
+if [ $numb -le 18 ]; then                                       ("-le" is lower than or equal to)
+    echo "It is lower than or equal to 18"
+fi
+
+if [ $numb -ge 18 ]; then                                       ("-ge" is greater than or equal to)
+    echo "It is greater than or equal to 18"
+fi
