@@ -13,3 +13,39 @@ To run the file we run:
     ./filename
 
 
+
+If functions on Strings
+
+if functions have to start with "if" and end with "fi"
+it is good practice to wrap strings between speech marks
+always leave space between the square brackets and condition
+
+Example:
+
+read -p "say something to greet me! " d                     (Print the quotation and then store the following input as variable d)
+echo "----------------------"
+
+if [ "$d" == "hello" ]; then                                (starting if function, ends in semi colon followed by "then", "==" means is equal)
+    echo "Hello To You"
+elif [ "$d" == "good morning" ]; then                       (else if functions use "elif")
+    echo "Good Morning To You"
+elif [ "$d" == "good afternoon" ]; then
+    echo "Good Afternoon To You"
+elif [ "$d" == "good evening" ]; then
+    echo "Good Evening To You"
+elif [ "$d" == "goodbye" ]; then
+    echo "Goodbye To You"
+else 
+    echo "Have a Nice Day"
+fi
+
+echo -e "\nThe Program Continues"
+
+
+we can use the syntax " if [ -z "$d" ]; then  "  to check if a variable is empty
+we can use the syntax " if [ -n "$d" ]; then  "  to check if a variable is NON-empty
+
+! can be used a negation, i.e. is NOT equal or is NOT empty 
+we can use the syntax " if [ "$d" != "hello" ]; then " to say if d does NOT equal
+we can use the syntax " if [ ! -z "$d" ]; then  "  to check if a variable is NON-empty
+
