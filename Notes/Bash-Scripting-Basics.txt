@@ -182,3 +182,9 @@ if [[ -s "$myfile" && -x "$myfile" ]]; then
     echo "$myfile is NON-Empty and Executable"
 fi
 
+
+
+For Loop
+
+
+
