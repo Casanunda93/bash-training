@@ -1,1 +1,24 @@
 The BACK Script
+
+Repeated use of .. to move back from a folder is inefficient. 
+We could write a script to create the command "back #" where # is the number of steps backwards you want to take.
+
+To do so we need to talk about a few concepts.
+
+
+Subshells
+
+When we open a terminal, we run the initial bash script to open a BASH shell. 
+if you run the command "exit" you leave the BASH shell, meaning you cannot do anything else in your terminal
+
+subshells are shells that can be opened from within the initial bash shell. 
+
+bash or /bin/bash                       (opens a subshell)
+exit                                    (leaves current shell i.e. if in a subshell, exits that subshell)
+
+if you create a file in a subshell, the file still exists in the main shell
+However variables set in a subshell are not accessible from the main shell
+
+This is key, as when we create a script, the initial line #! /bin/bash means that the script will run in a subshell. 
+This means variables set in the script are not accessible from the main shell. 
+
