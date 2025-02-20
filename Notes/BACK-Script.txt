@@ -65,4 +65,18 @@ code ~/.bashrc
 
 
 
+Command Substitution/Expansion
+
+which <command>                         (tells us the path of the specified command)
+e.g. which cd                           (tells us the path of "cd")
+Command substitution of expansion is where you use the output of one command as the input of another
+e.g.
+ls -l $(which cd)                       (runs "which cd", takes the path and inputs it into the ls-l command)
+
+This concept is useful for the storing of a command output as a variable
+e.g. 
+a=$(pwd)                                (runs pwd, then stored the output of pwd as variable a)
+
+date                                    (gives precise time and date)
+d=$(date)                               (stores the time and date at the moment of execution as variable d)
 
