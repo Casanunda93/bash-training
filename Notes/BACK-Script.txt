@@ -26,13 +26,27 @@ This means variables set in the script are not accessible from the main shell.
 
 
 
-The Source command
+The Source Command
 
 source <Script.sh>                      (Forces the specified script to run in the CURRENT shell rather than in a subshell)
 
 By running source, any variables specified in the script are now accessible by the current shell
 
 *** alternative syntax is . <Script.sh> but this is very much frowned upon ***
+
+
+The Type Command
+
+there are different types of commands:
+- executable programs e.g. cat or scripts we write etc
+- shell builtins e.d. cd 
+- alias e.g. commands we create ourselves
+
+type <command>                          (prints the type description of the specified command to screen, for alias' it also describes the alias)
+
+
+
+
 
 
 
