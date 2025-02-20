@@ -300,7 +300,7 @@ echo -e "\n-------------"
 echo -e "Example 13 \n-------------"
 echo "hello again"
 
-for (( i = 0; i < 25; i=i+1)); do                                           (this version sets a starting valie of i (0), gives it a break condition (stop when i is no longer smaller than 25), 
+for (( i = 0; i < 25; i=i+1)); do                                           (this version sets a starting value of i (0), gives it a break condition (stop when i is no longer smaller than 25), 
     echo "the value of i is:    $i"                                         and dictates the increment (1) to increase i before the loop starts again)
 done
 
