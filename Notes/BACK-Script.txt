@@ -16,9 +16,23 @@ subshells are shells that can be opened from within the initial bash shell.
 bash or /bin/bash                       (opens a subshell)
 exit                                    (leaves current shell i.e. if in a subshell, exits that subshell)
 
+You can enter as many subshells as you want 
+
 if you create a file in a subshell, the file still exists in the main shell
 However variables set in a subshell are not accessible from the main shell
 
 This is key, as when we create a script, the initial line #! /bin/bash means that the script will run in a subshell. 
 This means variables set in the script are not accessible from the main shell. 
+
+
+
+The Source command
+
+source <Script.sh>                      (Forces the specified script to run in the CURRENT shell rather than in a subshell)
+
+By running source, any variables specified in the script are now accessible by the current shell
+
+*** alternative syntax is . <Script.sh> but this is very much frowned upon ***
+
+
 
