@@ -42,10 +42,26 @@ there are different types of commands:
 - shell builtins e.d. cd 
 - alias e.g. commands we create ourselves
 
-type <command>                          (prints the type description of the specified command to screen, for alias' it also describes the alias)
+type <command>                          (prints the type description of the specified command to screen, for aliases it also describes the alias)
 
 
 
+Alias in Bash
+
+An alias is a command we create ourselves. For example we might want to create a command to replace having to type ls-l every time 
+
+alias <alias-name>='command'            (creates an alias name for a specific command)
+e.g. alias ll='ls-l'                    (creates the alias "ll" to run the command "ls-l")
+
+alias                                   (alias with no further input will list all aliases we have)
+unalias <alias-name>                    (removes specified alias)
+
+Permanent Aliases can be made in the same way as permanent variables.
+When we log in to the computer, the login script is run. 
+We can make changes to this script in order to create permanent aliases i.e. fixed aliases that will remain even if terminal is closed. 
+This file is called .bashrc on linux and is hidden in the home folder
+To open the file in our text editor we run:
+code ~/.bashrc
 
 
 
