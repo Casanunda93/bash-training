@@ -16,3 +16,61 @@ Here we can see specific info about Exit statuses
 Exit status can be useful for functions within shell scripting. 
 
 
+
+Sometimes you may find that you are running the same chunk of code over and over within a shell script. 
+In order to streamline the process, you can use functions to replace having to copy the same chunk over and over. 
+
+the syntax for functions is:
+
+<function-name>(){code-block}
+
+this way we can write the function name elsewhere in the code and have it run the code block.
+
+For example say we want to repeatedly tell the user the date and time followed by a small message. 
+We can create a function called mydate to replace the codeblock:
+
+mydate(){
+    echo "today is: "
+    date
+    echo "Have a Great Day"
+}
+
+Then when we want to run the function we just write the line: mydate
+
+The important thing about functions is that they also take input
+
+For instance, say we wanted a simple bit of code that spits out a welcome message after someone enters their name, we might want to run this code block for multiple name entries. The following example is a greetings form asking for "Your name" and "Your Wife's name":
+
+
+
+#! /bin/bash  
+
+read -p "Please Enter Your First Name: " F                          #Print the quotation and then store the following input as variable F
+echo "----------------------"
+
+read -p "Please Enter Your Original Surname: " S                    #Print the quotation and then store the following input as variable S
+echo "----------------------"
+
+hello2(){                                                           #Function name: hello2
+    echo "First Name: $1 "                                          #Echos first parameter given to function at point of running
+    echo "Surname: $2 "                                             #Echos second parameter given to function at point of running
+    echo "Greetings $1 $2 "                                         #Echos both parameters given to function at point of running
+}
+
+hello2 $F $S                                                        #Runs function setting variable F as parameter 1 and variable S as parameter 2
+
+echo "*********************************************"
+
+read -p "Please Enter Your Wife's First Name: " WF                  #Print the quotation and then store the following input as variable WF  
+echo "----------------------"
+
+read -p "Please Enter Your Wife's Original Surname: " WS            #Print the quotation and then store the following input as variable WS       
+echo "----------------------"
+
+hello2 $WF $WS                                                      #Runs function setting variable WF as parameter 1 and variable WS as parameter 2
+
+
+As we can see, rather than having to write the code block out twice, we can reference hello2 twice instead with different inputs
+
+
+
