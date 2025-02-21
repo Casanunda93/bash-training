@@ -1,0 +1,18 @@
+Every command in the linux system has an exit status. 
+The exit status is an integer. 
+It is 0 if a command is executed successfully. 
+It is non-0 if a command is executed unsuccessfully. 
+
+To access the exit status of a comman we use:
+$?
+e.g. We run a command that we want to check the ES of, then we run:
+echo $?
+
+To access the manual for information about a specific command:
+man <command>
+
+Here we can see specific info about Exit statuses
+
+Exit status can be useful for functions within shell scripting. 
+
+
