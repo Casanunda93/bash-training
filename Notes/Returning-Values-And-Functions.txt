@@ -70,6 +70,21 @@ echo "----------------------"
 hello2 $WF $WS                                                      #Runs function setting variable WF as parameter 1 and variable WS as parameter 2
 
 
+
+Functions also return an exit status value via $?
+This can be deliberately set to a specific value rather than just 0:
+return <integer/value>                                              #Sets the exit status to the specified value
+
+This is helpful in situations where we need to say return this value if this case or another value in a different case (else if functions)
+
+Variables inside created functions are global unless specified meaning that even if you set a variable inside a created function, that variable is known throughout the script
+
+if you want to make variable only known inside the function we have to make it a local variable:
+
+local var1="Eggs"                                                   #Sets var1 as a local variable and populates it with "eggs"
+
+*** IT IS GOOD PRACTISE TO SET ALL VARIABLES IN A FUNCTION AS LOCAL VARIABLES TO HELP PREVENT ERRORS ***
+
 As we can see, rather than having to write the code block out twice, we can reference hello2 twice instead with different inputs
 
 
