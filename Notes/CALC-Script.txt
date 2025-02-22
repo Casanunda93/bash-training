@@ -1,0 +1,12 @@
+Arithmetic In Bash
+
+Long story short, basic arithmetic in bash is awful. 
+It doesn't work. 
+We don't have access to answers with decimal points. 
+The syntax is also terrible:
+echo $((3 +5))                                      #Prints the answer to 3+5
+But it also doesn't really work for division for answers that aren't whole numbers.
+
+Long story short, we have to use a different environment called the bc environment. 
+
+bc                                                  #enters computational environment
