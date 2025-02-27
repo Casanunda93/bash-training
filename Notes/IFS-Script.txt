@@ -1,1 +1,53 @@
 The IFS Script
+
+Reading multiple variables:
+
+read a b c d                #We can use read to take the following input and store it as multiple variables
+10 20 30 40                 #Each value is separated by a space and so is stored in one of the variables
+
+echo $a
+10
+echo $b
+20
+echo $c
+30
+echo $d
+40
+
+However if we set 4 variable but give more than 4 values to store the following happens:
+
+read a b c d                
+10 20 30 40 50 60 70 80                 
+
+echo $a
+10
+echo $b
+20
+echo $c
+30
+echo $d
+40 50 60 70 80
+
+
+The important thing about the read command is that we cannot just pipe ( | ) as with other commands, we have to redirect using here doc or string
+
+read a <<< "grean 45"               #redirect here string as input to read a (store string as variable a)
+echo &a
+green 45                            #output
+
+However we can set multiple variables this way:
+
+read a b c d e <<< "grean 45 50 55 60"               #redirect here string as input to read a (store string as variables a-e where each input is separated by space)
+echo &a
+green                               
+echo $b
+45
+echo $c
+50
+echo $d
+55
+echo $e
+60
+
+
+
