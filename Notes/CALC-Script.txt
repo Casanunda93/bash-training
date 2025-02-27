@@ -142,3 +142,137 @@ read w <<< "I sure do like the letter w :)"             #redirects the string to
 echo $w                                                 #echoes variable w
 I sure do like the letter w :)                          #output
 
+
+
+
+
+Scripts with Parameters - Refresher
+
+We already know that every script in our terminal is an executable command e.g. "ls"
+It can also take parameters such a folder name or specific options e.g. "ls ~/" would list all files and folders in the home folder or "ls -a" shows all files including hidden ones. 
+
+We can also pass parameters into a shell script, For example:
+
+Say we have a script called parameters.sh that contains the following
+
+ #! /bin/bash
+
+echo "####################################"
+
+echo "This is parameter 1:  $1"
+
+
+If we run the script as is i.e. ./parameters.sh then the returned echo would be blank. 
+However, if we pass a parameter into the run command, the parameter populates the script as $1
+
+e.g.
+
+./parameters.sh ADAM
+
+"####################################
+This is parameter 1:  ADAM"
+
+
+This works for multiple parameters, for instance if we have multiple lines in the script:
+#! /bin/bash
+
+echo "####################################"
+
+echo "This is parameter 1:  $1"
+echo "This is parameter 2:  $2"
+echo "This is parameter 3:  $3"
+echo "This is parameter 4:  $4"
+echo "This is parameter 5:  $5"
+
+And we run ./parameters.sh Q W E R T
+
+The output we get is:
+
+####################################
+This is parameter 1:  Q
+This is parameter 2:  W
+This is parameter 3:  E
+This is parameter 4:  R
+This is parameter 5:  T
+
+We can also pass parameters with spaces as one parameter as long as we enclose them in " "
+e.g.
+./parameters.sh Q W E R "Adam Is The Best"
+####################################
+This is parameter 1:  Q
+This is parameter 2:  W
+This is parameter 3:  E
+This is parameter 4:  R
+This is parameter 5:  Adam Is The Best
+
+
+*** BE CAREFUL: ANY PARAMETER AFTER THE VALUE OF 9 HAS TO BE ENCLOSED IN {} OTHERWISE IT WILL LOOK INTO VALUE 1 ***
+
+Extra tips and tricks:
+$# outputs the number of parameters we have
+e.g. echo "The number of parameters we have is: $# "
+
+$@ outputs all the parameters we have
+e.g. echo "These are our parameters: $@ "
+Good for for loops
+
+*** $@ and $* do the same thing UNLESS they are inside "", "$*" interprets all parameters as one whole string, bad for loops ***
+
+
+
+Parameter Shifting
+
+the "shift" command allows us to point the variable that the parameter is stored to to the next in the line e.g.
+
+#! /bin/bash
+
+echo "####################################"
+
+echo "This is parameter 1:  $1"
+shift
+echo "This is parameter 2:  $2"
+echo "This is parameter 3:  $3"
+echo "This is parameter 4:  $4"
+echo "This is parameter 5:  $5"
+
+And we run ./parameters.sh Q W E R T
+
+The output we get is:
+
+####################################
+This is parameter 1:  Q
+This is parameter 2:  E
+This is parameter 3:  R
+This is parameter 4:  T
+This is parameter 5:  
+
+As we can see, 1 still points at the first parameter, but 2 now points at the 3rd, 3 points at 4th etc
+
+It is also possible to shift by a different integer:
+
+#! /bin/bash
+
+echo "####################################"
+
+echo "This is parameter 1:  $1"
+shift 2
+echo "This is parameter 2:  $2"
+echo "This is parameter 3:  $3"
+echo "This is parameter 4:  $4"
+echo "This is parameter 5:  $5"
+
+And we run ./parameters.sh Q W E R T
+
+The output we get is:
+
+####################################
+This is parameter 1:  Q
+This is parameter 2:  R
+This is parameter 3:  T
+This is parameter 4:  
+This is parameter 5:  
+
+
+Additional info: $0 will return the absolute path of the script
+
+
