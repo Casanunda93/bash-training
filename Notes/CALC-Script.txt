@@ -74,4 +74,43 @@ bc -q                       #opens the bc environment in "Quiet mode" i.e. witho
 
 
 
+Redirecting input
+
+Example:
+
+We can use the command "cat" without an additional arguement, when we do this, the terminal will read whatever is typed next and then print it on the next line, this will continue untill the cat command is
+manually stopped via ^C i.e.
+
+cat                         #starts the cat process
+
+adamfox2k25                 #input
+adamfox2k25                 #output
+
+^C
+ 
+This isn't massively useful, however we can redirect the input instead. 
+
+cat << _EOF_                #this is the "here document" command, it will redirect whatever is typed next as an input of cat until the end of file symbol is enterred, in this case "_EOF_"
+> Hello                     #input
+> My Name is Adam           #input
+> Look at me go             #input
+> _EOF_                     #end of file symbol
+Hello                       #output
+My Name is Adam             #output
+Look at me go               #output
+
+The here document symbol << can be thought of as whatever is typed next is a document of data to be used as an input into the previous command.
+It can be used with many commands including bc
+
+bc << _EOF_                 #redirrected bc command, sends the following input "document" to the bc environment without opening the bc environment
+> 3+2                       #input
+> 4*5                       #input
+> a=10                      #input
+> 20*a                      #input
+> _EOF_                     #end of file symbol
+5                           #output
+20                          #output
+200                         #output
+
+
 
