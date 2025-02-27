@@ -50,4 +50,20 @@ echo $e
 60
 
 
+The Grep Command - refresher
+
+
+grep <search term> <filename>                       #searches specifed file for specified term 
+
+Be Aware: Grep is case sensitive for the terms you search, to avoid this issue use:
+
+grep -i <search term> <filename>
+
+we can also pipe into grep
+ls | grep t                         #lists all files in current directory with t in the name
+
+If we want to search for everything OTHER than the search term we can use the -v option:
+grep -v <search term> <filename>    #searches file for everything other than the search term
+ls | grep -v t                      #lists all files NOT containing t in the name 
+
 
