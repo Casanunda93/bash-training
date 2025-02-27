@@ -10,3 +10,68 @@ But it also doesn't really work for division for answers that aren't whole numbe
 Long story short, we have to use a different environment called the bc environment. 
 
 bc                                                  #enters computational environment
+
+Once in the bc environment we can perform normal calculations:
+ + - * / ^ sqrt()
+
+However when we look at division, agin it seems to spit out the wrong answer
+
+4/3 = 1 ?????
+
+Fortunately in this envronment we can set the ammout of decimal places we want to go to by manipulating the "scale" variable. 
+
+scale=2             #sets the calculator to 2 decimal places
+
+to leave the bc environment we type:
+
+quit                #leaves bc environment
+
+As with all executable commands we can pass in parameters:
+
+bc -l               #opens the bc environment and sets scale to 20
+
+Another Pro of the bc environement is that you can set variables. This makes it possible to perform algebraic equitions:
+
+a=12
+b=.32
+
+a*b
+3.84
+
+It can also be used for boolean expression:
+
+10<3                #10 is less than 3 returns 0 i.e. FALSE
+0
+
+10<20               #10 is less than 20 returns 1 i.e TRUE
+1
+
+(10<20) || (1<10)           #10 is less than 20 OR 1 is less than 10 returns 1 i.e. TRUE
+1
+
+(10<20) || (10<3)           #10 is less than 20 OR 10 is less than 3 returns 1 i.e. TRUE
+1
+
+(10<20) && (10<3)           #10 is less than 20 AND 10 is less than 3 returns 0 i.e. FALSE
+0
+
+Think about this in combination with variables inputed via script. 
+
+
+Another useful command:
+
+length(123)                 #return the length of the inputted integer i.e the length of 123 in characters is 3
+3
+
+scale(123.3232)             #similarly scale can return the number of decimals i.e. the number of characters after the decimal point of 123.3232 is 4
+4
+
+Everytime we run the bc environment we output a copyright warning/label
+For the purposes of scripting this is worth bypassing:
+
+bc -q                       #opens the bc environment in "Quiet mode" i.e. without the copyright label
+
+
+
+
+
