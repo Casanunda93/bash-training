@@ -112,5 +112,33 @@ bc << _EOF_                 #redirrected bc command, sends the following input "
 20                          #output
 200                         #output
 
+Another method for redirection is the "Here string" redirection
 
+Similar to here document, here string redirects the following string as an input into the previous command e.g.
+
+cat <<< "Adam is the best"              #symbol for redirect string is <<<, takes the string that follows as an input to cat
+Adam is the best                        #output
+
+The above seems simple but we could do the same with variables:
+
+s="string example"                      #sets variable value as inputted string
+cat <<< $s                              #redirects variable contents as an input of cat
+string example                          #output
+
+As with here document, here string also works with the bc command
+bc <<< "3*4"                            #string redirected into bc
+12                                      #output
+
+Another example:
+
+q="3*7 +5"                              #calculation set as variable
+bc <<< $q                               #variable contents redirected as input to bc
+26                                      #output
+
+
+One useful use of this command is the interaction with the read command:
+
+read w <<< "I sure do like the letter w :)"             #redirects the string to the read command, which stores the input as variable w
+echo $w                                                 #echoes variable w
+I sure do like the letter w :)                          #output
 
