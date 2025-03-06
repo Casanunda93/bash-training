@@ -1,3 +1,24 @@
 The MAX_STRING script
 
 
+REFRESHER: Pipe
+
+Pipe is used to take the output of command 1 as the input of command 2:
+
+command1 | command 2
+e.g. ls folder | less                               (takes the listed contents over folder and pipes it into the less command generating a second screen output)
+
+
+extra commands:
+
+tail -4 file1.txt                                   (Output the last 4 lines of a specified file to the screen)
+
+so say you have folder 1 containing 5 txt folders 1-5. 
+
+ls folder1 | tail -3                                (Output the last 3 names of files in the folder to the screen i.e. 3.txt, 4.txt and 5.txt)
+
+You can pipe multiple times into multiple commands e.g.
+
+ls folder1 | tail -3 | less                         (Output the last 3 names of files in the folder to a second screen i.e. 3.txt, 4.txt and 5.txt)
+
+ls folder1 | tail -3 | less | sort >  newfile.txt   (Output to a newfile the alphebetically sorted last three filenames of the listed directory contents)
