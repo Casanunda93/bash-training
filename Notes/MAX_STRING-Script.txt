@@ -22,3 +22,49 @@ You can pipe multiple times into multiple commands e.g.
 ls folder1 | tail -3 | less                         (Output the last 3 names of files in the folder to a second screen i.e. 3.txt, 4.txt and 5.txt)
 
 ls folder1 | tail -3 | less | sort >  newfile.txt   (Output to a newfile the alphebetically sorted last three filenames of the listed directory contents)
+
+
+The WC command or Wordcount Command
+
+wc filename.txt                                                                 #runs the wc command for the designated file
+
+<Number of New Lines>       <number of words>       <number of Characters>    <filename>                #Output
+
+****IMPORTANT****
+The first number it outputs is the number of NEW lines. 
+Think of it as the ammount of times you hit return. 
+Therefore, the first line of the file isn't counted. 
+
+SIMILARLY the ammount of characters often gives us one MORE than we should have. 
+Therefore we have to adjust our scripts accordingly to compensate for these quirks. 
+
+Passing parameters into the wc command helps us differentiate the output values
+
+wc -l filename.txt                  #outputs number of new lines in a file
+wc -w filename.txt                  #outputs number of words in a file
+wc -c filename.txt                  #outputs number of bytes in a file (usually same as characters)
+wc -m filename.txt                  #outputs number of characters in a file (usually same as bytes)
+
+we can pipe directly into wc using echo:
+
+echo "abc defg hijk" | wc -l
+1                                   #in this case it recognises 1 line
+echo "abc defg hijk" | wc -w
+3                                   #counts 3 words
+echo "abc defg hijk" | wc -c
+13                                  #counts 13 characters, remember space is a character in this case
+
+
+A practical use for wc is to count the number of items inside a folder e.g. 
+
+ls -l | wc -l                       #ls -l would list the files in a directory with full information to the screen, istead we pipe the output into the wc command with -l to count the number of lines
+                                    #since the output ls-l designates one line per file, counting the number of lines will count the number of files
+                                    #in this example the line number is actually over by 1, this is because the ls -l command adds its own line at the start of the information block
+
+If we wanted to specifically count the number of txt files in a folder instead we could run
+
+ls -l *txt | wc -l                  #in this case it ls -l doesn't add an extra line so no manipulation would be needed. 
+
+It seems like when it comes to piping into wc, it is best practise to check what is being piped manually, don't just assume the count is correct, go back and check. 
+
+
