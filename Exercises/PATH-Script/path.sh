@@ -1,11 +1,13 @@
-The Path Script
+#! /bin/bash 
 
-We want to creation a script that allows the user to perform three actions:
-1) display all directories in the Path Variable in a formatted layout
-2) search each directory in the path variable to see if a specific command is present and display which directories they are present in
-3) check to see if a specific directory is present within the path variable
+echo "***** PATH SCRIPT *****"
 
-As seen previously in the IFS script, the Path variable uses colon as its field seperator so we need to manipulate IFS in this script
+#Creation of a script that allows the user to perform three actions:
+#1) display all directories in the Path Variable in a formatted layout
+#2) search each directory in the path variable to see if a specific command is present and display which directories they are present in
+#3) check to see if a specific directory is present within the path variable
+
+#The Path variable uses colon as its field seperator so we need to manipulate IFS in this script
 
 old_IFS=$IFS;                                                           #stores standard IFS as variable
 IFS=":";
