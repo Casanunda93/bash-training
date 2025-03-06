@@ -68,3 +68,48 @@ ls -l *txt | wc -l                  #in this case it ls -l doesn't add an extra 
 It seems like when it comes to piping into wc, it is best practise to check what is being piped manually, don't just assume the count is correct, go back and check. 
 
 
+
+
+The Strings command
+
+The strings command takes a file as input and returns each string of printable character inside that file. 
+It's main use is to extract the text part of a file whilst disregarding the non-text part of a file.
+
+For example there are some binary files that contain text as well as binary, in this case strings could extract the text and bypass the binary. 
+It is very useful to gather all the strings contained in a simple text file in a similar way to cat
+
+strings filename.txt            #returns the printable characters inside the specified file
+
+we can also store this output as a variable, or pipe it into another command. 
+
+a=$(strings filename.txt)       #stores the output of strings as variable a
+strings filename.txt | wc -l    #gives a line count of all the printable characters in the specified file 
+
+It's important to differentiate between cat and strings. 
+cat will print EVERY line of a file
+strings will print ONLY the printable lines
+
+For example, we have a note called Intro-and-Basics.txt
+If we pipe the cat output into a line count command we would get the following:
+
+cat Intro-and-Basics.txt | wc -l
+313
+
+Whereas If we pipe the strings output into a line count command we would get the following:
+
+strings Intro-and-Basics.txt | wc -l
+181
+
+This is because in this example, strings ommits the blank return lines
+
+
+The useful part of the strings command is it's delicacy. 
+By default the strings command only takes strings that are a minimum of 4 characters long. 
+We can change that by passing the parameter -n into the strings command and specifying the minimum character length. 
+
+strings -n 3 filename.txt           #now strings will consider any printable strings of a minimum 3 characters long
+strings -n 2 filename.txt           #now strings will consider any printable strings of a minimum 2 characters long
+strings -n 1 filename.txt           #now strings will consider any printable strings of a minimum 1 characters long
+
+
+
