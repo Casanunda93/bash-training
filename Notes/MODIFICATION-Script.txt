@@ -1,1 +1,145 @@
-The Modification Script 
+The Modification Script:
+
+
+Arrays
+
+An array is a variable that holds more than one value at a time. 
+Think of them as tables e.g. a 2D array is like a spreadsheet. 
+
+In Bash, an array is limited to 1D. 
+Think of it as just a row of elements.
+
+Every element of an array is accessed using an address called an index.
+Arrays are a somewhat recent update to unix. 
+
+Say we want to create an array called "a" and populate the following values:
+"ball", "glass", 22, "pencil"
+
+To do this we run the following:
+
+<array-name>[index]=value
+
+i.e.
+a[0]="ball"
+a[1]="glass"
+a[2]=22
+a[3]="pencil"
+
+if we wanted to echo out any of these values:
+
+echo ${a[0]}                    #input
+ball                            #output
+
+if we wanted to populate an array in a more efficient way:
+
+<array-name>=(value1, value2, value3)
+
+e.g.
+days=(mon tue wed thurs fri)                #stores the days of the week in array day starting at index 0
+echo ${days[0]}                             #input
+mon                                         #output
+echo ${days[3]}                             #input
+thurs                                       #output
+
+Populating an array in the above manner always sets the index to 0 for the first value
+
+We can always change the value of any array element, for example if we wanted to make the fourth element (index 3) of the above array "Sun":
+days[3]=Sun
+echo ${days[3]}                             #input
+sun                                         #output
+
+a common way of accessing array elements is via for loop:
+
+Example
+
+#! /bin/bash
+
+days=(mon tue wed thu fri)                  #array named days, populated with days of the week
+
+for i in {0..4}; do                         #for loop, i starts at 0, loops up to 4
+    echo "element $i is ${days[i]}          #echo value of i (index) and the element (value) of the array with the index value i
+done 
+
+
+element 0 is mon                            #output
+element 1 is tue
+element 2 is wed
+element 3 is thu
+element 4 is fri
+
+
+if you wanted to see all the elements of an array in one line you could instead run:
+
+echo ${days[@]}                             #input
+mon tue wed thu fri                         #output
+
+Using that above syntax, we can run a different for loop to access each element in an array
+
+for element in ${days[@]}; do               #for loop, variable "element" access each value in the array
+    echo "This element is $element"         #echo the value of variable "element"
+done
+
+
+In the above example, each element of the array is accessed and echoed, but unlike the first for loop each elements' index is not displayed
+
+
+If we wanted to know the number of elements in an array:
+
+days=(mon tue wed thu fri)                  #array named days, populated with days of the week
+echo ${#days[@]}                            #input
+5                                           #output
+
+Again, note in the above that the number of elements is 5, but the array is populated starting at index 0. 
+
+Indexing can pose a headache. 
+For example, we can give any index in an array a value, it doesn't have to be the next logical number. 
+
+say we have an array called "c" that we want to populate with: 0, hey, 70, 20
+We could, if we wanted, set the indexes for those elements to any value e.g.
+
+c[0]=0
+c[3]=hey
+c[7]=70
+c[2]=20
+
+If we then echoed out all the elements in the array:
+
+echo ${c[@]}                                #input
+0 20 hey 70                                 #output
+
+We have no way of telling from this which indexes have been populated.
+
+To find out which indexes have been used in an array we can run:
+
+echo ${!c[@]}                               #input
+0 2 3 7                                     #output
+
+This inadvertedly also tells us the largest and smallest indexes that are filled. 
+
+Helpful extras:
+
+If we want to add an extra element to an array we can use the following:
+days=(mon tue wed thu fri)                  #array named days, populated with days of the week
+days+=(sat sun)                             #add the extra two days to the end of the array
+echo ${days[@]}                             #echo all elements of the array
+mon tue wed thu fri sat sun                 #output
+
+You can unset elements of an array in the same way you unset variables:
+unset <array-name>[index]
+e.g. 
+unset days[6]                               #removes "sun" from the array
+
+You can unset the entire array in the same way 
+unset <array-name>
+e.g. 
+unset days                                  
+
+It is also worth knowing that the name of the array is also considered index 0. 
+So if for example you ran the command "days=SUN" it would overright the index 0 value with SUN
+e.g. the new element list would be "SUN tue wed thu fri sat"
+This is helpful to know to avoid mistakes, but not likely to be used much in practise, more something to avoid. 
+
+
+
+
+
