@@ -315,3 +315,164 @@ And as above we can use pipe and redirection with the delimeter option.
 
 
 
+
+The Stat command
+
+The stat command gives you detailed info about files and folders in your system. 
+It is one of the rare exceptions of commands that behave very differently in a linux unix system compared to a mac unix system 
+
+Linux 
+
+stat <file-name>                                #outputs the stat data for a specific file
+e.g. 
+
+stat PATH-Script.txt                                                                        #input 
+  File: PATH-Script.txt
+  Size: 4202      	Blocks: 16         IO Block: 4096   regular file                        #output
+Device: 8,2	Inode: 9568297     Links: 1
+Access: (0664/-rw-rw-r--)  Uid: ( 1000/    adam)   Gid: ( 1000/    adam)
+Access: 2025-03-12 12:15:14.771977528 +0000
+Modify: 2025-03-06 13:33:41.087699774 +0000
+Change: 2025-03-06 13:33:41.090699796 +0000
+ Birth: 2025-03-06 13:33:41.083699746 +0000
+
+We can utilise the stat command to grab specific information about a file by passing the format parameter
+
+The general form is:
+
+stat --format %Letter <filename>                        #where the letter is specific to a certain type of data 
+
+e.g. say you wanted to pick out the filename, we use "n":
+
+stat --format %n PATH-Script.txt            #input
+PATH-Script.txt                             #output
+
+Alternatively, the short form of the above command is:
+stat -c %n PATH-Script.txt
+Either works fine
+
+
+Another useful letter is "A" which corresponds to file's permissions:
+
+stat -c %A PATH-Script.txt                  #input
+-rw-rw-r--                                  #output
+
+The complete list of letter options can be found running: man stat
+(These aren't neccessary to know)
+
+If you are looking for something specific in the manual:
+
+/searchterm e.g. /size will highlight the word size occuring in the manual
+If there are multple hits for the search term, use "n" to go to next and "N" for previous
+
+%a     permission bits in octal (note '#' and '0' printf flags)
+%A     permission bits and file type in human readable form
+%b     number of blocks allocated (see %B)
+%B     the size in bytes of each block reported by %b
+%C     SELinux security context string
+%d     device number in decimal (st_dev)
+%D     device number in hex (st_dev)
+%Hd    major device number in decimal
+%Ld    minor device number in decimal
+%f     raw mode in hex
+%F     file type
+%g     group ID of owner
+%G     group name of owner
+%h     number of hard links
+%i     inode number
+%m     mount point
+%n     file name
+%N     quoted file name with dereference if symbolic link
+%o     optimal I/O transfer size hint
+%s     total size, in bytes
+%r     device type in decimal (st_rdev)
+%R     device type in hex (st_rdev)
+%Hr    major device type in decimal, for character/block device special files
+%Lr    minor device type in decimal, for character/block device special files
+%t     major  device  type  in  hex, for character/block device special files
+%T     minor device type in hex,  for  character/block  device  special files
+%u     user ID of owner
+%U     user name of owner
+%w     time of file birth, human-readable; - if unknown
+%W     time of file birth, seconds since Epoch; 0 if unknown
+%x     time of last access, human-readable
+%X     time of last access, seconds since Epoch
+%y     time of last data modification, human-readable
+%Y     time of last data modification, seconds since Epoch
+%z     time of last status change, human-readable
+%Z     time of last status change, seconds since Epoch
+Valid format sequences for file systems:
+%a     free blocks available to non-superuser
+%b     total data blocks in file system
+%c     total file nodes in file system
+%d     free file nodes in file system
+%f     free blocks in file system
+%i     file system ID in hex
+%l     maximum length of filenames
+%n     file name
+%s     block size (for faster transfers)
+%S     fundamental block size (for block counts)
+%t     file system type in hex
+%T     file system type in human readable form
+--terse is equivalent to the following FORMAT:
+%n %s %b %f %u %g %D %i %h %t %T %X %Y %Z %W %o %C
+--terse --file-system is equivalent to the following FORMAT:
+%n %i %l %t %s %S %b %f %a %c %d
+
+
+As we can see, depending on whether the character is capitalised or not can give us different information
+e.g using u vs U will either give you the user ID of the owner of the file or the username of the owner of the file
+
+Additional info: 
+
+The user ID is stored in an environment variable and can be accessed at any time
+e.g. echo $UID
+
+Some of the time-related options are "Since Epoch"
+Think of this as Unix-time, it is a way of expressing time in seconds since midnight of 01/01/1970.
+You can access the current epoch time using:
+
+date +%s
+ 
+
+
+
+
+Stat command in mac
+
+Stat works similarly but has some key differences.
+running "stat PATH-Script.txt" as we did before still spits out information about the file but it is much less readable. 
+If you want it to match closely to the way linux works you instead have to run it wit the -x option;
+
+stat -x PATH-Script.txt
+
+In order to select detailed information from a file we use the -f option, the general format is:
+
+stat -f %letter <filename>              #-f is the mac equivilent to --format
+
+e.g. 
+stat -f %N PATH-Script.txt              #input
+PATH-Script.txt                         #output
+
+The important difference between mac and linux is that is you want a human readable way of interpreting information such as permissions the method is different. 
+On linux as we saw we used upper case and lower case to access different formats of the same info e.g %a vs %A
+On Mac, not only is the letter different (p), but in order to make it human readable, you have to add S between the % and the letter. 
+This basically says "give me the output in a string readable way"
+e.g.
+
+stat -f %Sp PATH-Script.txt              #input
+-rw-rw-r--                               #output
+
+The addition of the capital S can be used with any of the mac letter options such as user ID vs Username (%u vs %Su), group ID vs groupname (%g vs %Sg) etc 
+
+For more information regarding what command options you have, again check the manual for stat via:
+
+man stat
+
+If you are looking for something specific in the manual:
+
+/searchterm e.g. /size will highlight the word size occuring in the manual
+If there are multple hits for the search term, use "n" to go to next and "N" for previous
+
+
+
