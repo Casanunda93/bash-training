@@ -141,5 +141,177 @@ This is helpful to know to avoid mistakes, but not likely to be used much in pra
 
 
 
+The Cut Command
+
+Often when you have a file output or for example an ls -l, you have too much information and you just want a piece of the info. 
+Maybe you're running a script and you need to store a segment of the info so the script can react accordingly. 
+We don't want all of the output so we use the cut command. 
+
+Real world example:
+Say we have a file named bob.txt that contains the following:
+
+1 line first
+abc
+ab
+a
+
+2 line here
+3 line here
+4 line
+
+
+Now say we want the first character of each line, we would run 
+
+cut -c 1 bob.txt                            #input
+1                                           #output
+a
+a
+a
+
+2
+3
+4
+
+Alternatively if we wanted only the 3rd character of each line:
+
+cut -c 3 bob.txt                            #input
+l                                           #output
+c
+
+
+
+l
+l
+l
+
+We can also cut in ranges, for eaxmple if we wanted characters 1-3:
+
+cut -c 1-3 bob.txt                            #input
+1 l                                           #output
+abc
+ab
+a
+
+2 l
+3 l
+4 l
+
+
+We can also cut from a certain character to the end of the line:
+
+cut -c 3- bob.txt                             #input
+line first                                    #output
+c
+
+
+
+line here
+line here
+line
+
+
+Alternatively if we wanted every character from the start up to the fourth character:
+
+cut -c -4 bob.txt                             #input
+1 li                                          #output
+abc
+ab
+a
+
+2 li
+3 li
+4 li
+
+
+We can also select multiple specific character:
+
+cut -c 1,3 bob.txt                             #input
+1l                                             #output
+ac
+a
+a
+
+2l
+3l
+4l
+
+
+
+We can pipe into cut:
+
+echo "something inside here" | cut -c 2-5       #input
+omet                                            #output
+
+
+We can also redirect into cut:
+
+cut -c 3- <<< " "string redirect :)"            #input
+ring redirect :)                                #output
+
+
+Using -c with cut is extremely useful when you know the character number you want to cut. 
+However sometimes you have outputs that aren't fixed in length so you won't know the character number to cut. 
+In this case we may want to cut a specific field instead. 
+Analysing the same file as above, the fields are each string seperated by a space, therefore the delimiter is space.
+
+Another example, say we have a file named "bob2.txt" that contains the following:
+
+1,line,third,end
+abc,def
+abc, rob,alex,123
+a,gio, mark,p12q
+2,line,here,44
+3,line,here
+4,line
+
+As we can see, in this case the delimeter is "," so if we wanted to cut specific fields, we have to specify the delimeter and that we want to cut specific fields:
+
+cut -d "," -f 1 bob2.txt                        #input, the -d perameter sets the delimeter, the -f specifes that we are looking at fields, the integer tell which specific field to cut
+1                                               #output
+abc
+abc
+a
+2
+3
+4
+
+If we wanted the third field then we would:
+
+cut -d "," -f 3 bob2.txt                        #input, the -d perameter sets the delimeter, the -f specifes that we are looking at fields, the integer tell which specific field to cut
+third                                           #output
+
+alex
+ mark
+here
+here
+
+
+Everything we did with the -c character option, we can do here. E.g if we wanted fields 1-3
+
+cut -d "," -f 1-3 bob2.txt                        #input, the -d perameter sets the delimeter, the -f specifes that we are looking at fields, the integer range tells which specific fields to cut
+1,line,third                                      #output
+abc,def
+abc, rob,alex
+a,gio, mark
+2,line,here
+3,line,here
+4,line
+
+Or if we wanted everything from the second field onward:
+
+cut -d "," -f 2- bob2.txt                         #input, the -d perameter sets the delimeter, the -f specifes that we are looking at fields, the integer range tells which specific fields to cut
+line,third,end                                    #output
+def
+ rob,alex,123
+gio, mark,p12q
+line,here,44
+line,here
+line
+
+
+If we wanted every field upto field 2 we would run: cut -d "," -f -2 bob2.txt 
+If we specifically wanted fields 1 and 4 we would run: cut -d "," -f 1,4 bob2.txt
+And as above we can use pipe and redirection with the delimeter option.  
+
 
 
